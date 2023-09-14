@@ -2,6 +2,8 @@ version: "3.4"
 services:
   baserow:
     image: baserow/baserow:${SOFTWARE_VERSION_TAG}
+    container_name: 'baserow'
+    restart: always
     environment:
       BASEROW_PUBLIC_URL: "https://${DOMAIN}"
       DATABASE_HOST: db
