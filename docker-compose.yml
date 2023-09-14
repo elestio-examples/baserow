@@ -1,7 +1,7 @@
 version: "3.4"
 services:
   baserow:
-    image: baserow/baserow:latest
+    image: baserow/baserow:${SOFTWARE_VERSION_TAG}
     environment:
       BASEROW_PUBLIC_URL: "https://${DOMAIN}"
       DATABASE_HOST: db
