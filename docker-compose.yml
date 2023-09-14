@@ -13,12 +13,12 @@ services:
       REDIS_HOST: redis
       REDIS_PASSWORD: ${ADMIN_PASSWORD}
       REDIS_PORT: 6379
-      EMAIL_SMTP: True
+      EMAIL_SMTP: "True"
       EMAIL_SMTP_HOST: ${EMAIL_SMTP_HOST}
       EMAIL_SMTP_PORT: ${EMAIL_SMTP_PORT}
       EMAIL_SMTP_USER: ${EMAIL_SMTP_USER}
       EMAIL_SMTP_PASSWORD: ${EMAIL_SMTP_PASSWORD}
-      EMAIL_SMTP_USE_TLS: False
+      EMAIL_SMTP_USE_TLS: "False"
     ports:
       - "172.17.0.1:8725:80"
     volumes:
