@@ -18,5 +18,3 @@ cat <<EOT > ./servers.json
     }
 }
 EOT
-
-rm post.txt
