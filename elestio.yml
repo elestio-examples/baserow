@@ -7,6 +7,20 @@ ports:
     public: true
     path: "/"
     isAuth: false
+  - protocol: "HTTPS"
+    targetProtocol: "HTTP"
+    listeningPort: "6443"
+    targetPort: "8924"
+    targetIP: "172.17.0.1"
+    public: true
+    path: "/"
+    isAuth: false
+  - protocol: "TCP"
+    targetProtocol: "TCP"
+    listeningPort: "25440"
+    targetIP: "172.17.0.1"
+    targetPort: "5735"
+    public: true
 
 environments:
   - key: "ADMIN_EMAIL"
@@ -15,6 +29,14 @@ environments:
     value: "random_password"
   - key: "DOMAIN"
     value: "[CI_CD_DOMAIN]"
+  - key: "EMAIL_SMTP_HOST"
+    value: "172.17.0.1"
+  - key: "EMAIL_SMTP_PORT"
+    value: "25"
+  - key: "EMAIL_SMTP_USER"
+    value: ""
+  - key: "EMAIL_SMTP_PASSWORD"
+    value: ""
 
 config:
   runTime: "dockerCompose"
@@ -36,5 +58,9 @@ lifeCycleConfig:
 webUI:
   - url: "https://[CI_CD_DOMAIN]"
     label: "Baserow"
+    login: "[ADMIN_EMAIL]"
+    password: "[ADMIN_PASSWORD]"
+  - url: "https://[CI_CD_DOMAIN]:6443"
+    label: "PgAdmin"
     login: "[ADMIN_EMAIL]"
     password: "[ADMIN_PASSWORD]"
