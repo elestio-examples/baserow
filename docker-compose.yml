@@ -1,7 +1,6 @@
 version: "3.4"
 services:
   baserow:
-    container_name: baserow
     image: baserow/baserow:latest
     environment:
       BASEROW_PUBLIC_URL: "https://${DOMAIN}"
@@ -10,19 +9,15 @@ services:
       DATABASE_USER: postgres
       DATABASE_PASSWORD: ${ADMIN_PASSWORD}
       DATABASE_PORT: 5432
-      REDIS_HOST: redis
-      REDIS_PASSWORD: ${ADMIN_PASSWORD}
-      REDIS_PORT: 6379
       EMAIL_SMTP: "True"
       EMAIL_SMTP_HOST: ${EMAIL_SMTP_HOST}
-      EMAIL_SMTP_PORT: ${EMAIL_SMTP_PORT}
-      EMAIL_SMTP_USER: ${EMAIL_SMTP_USER}
       EMAIL_SMTP_PASSWORD: ${EMAIL_SMTP_PASSWORD}
+      FROM_EMAIL: ${FROM_EMAIL}
       EMAIL_SMTP_USE_TLS: "False"
     ports:
       - "172.17.0.1:8725:80"
     volumes:
-      - ./baserow_data:/baserow/data
+      - ./storage/baserow_data:/baserow/data
 
   db:
     image: elestio/postgres:15
@@ -35,15 +30,6 @@ services:
       POSTGRES_DB: baserow
     volumes:
       - ./storage/pgdata:/var/lib/postgresql/data/
-
-  redis:
-    image: elestio/redis:7.0
-    restart: always
-    env_file:
-      - ./.env
-    volumes:
-      - "./storage/redis-data:/data"
-    command: ["redis-server", "--requirepass", "${ADMIN_PASSWORD}"]
 
   pgadmin4:
     image: dpage/pgadmin4:latest
