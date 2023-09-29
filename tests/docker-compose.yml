@@ -1,0 +1,46 @@
+version: "3.3"
+services:
+  baserow:
+    image: elestio4test/baserow:${SOFTWARE_VERSION_TAG}
+    container_name: 'baserow'
+    restart: always
+    environment:
+      BASEROW_PUBLIC_URL: "https://${DOMAIN}"
+      DATABASE_HOST: db
+      DATABASE_NAME: baserow
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: ${ADMIN_PASSWORD}
+      DATABASE_PORT: 5432
+      EMAIL_SMTP: "True"
+      EMAIL_SMTP_HOST: ${EMAIL_SMTP_HOST}
+      EMAIL_SMTP_PASSWORD: ${EMAIL_SMTP_PASSWORD}
+      FROM_EMAIL: ${FROM_EMAIL}
+      EMAIL_SMTP_USE_TLS: "False"
+    ports:
+      - "172.17.0.1:8725:80"
+    volumes:
+      - ./storage/baserow_data:/baserow/data
+
+  db:
+    image: elestio/postgres:15
+    restart: always
+    ports:
+      - "172.17.0.1:5735:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${ADMIN_PASSWORD}
+      POSTGRES_DB: baserow
+    volumes:
+      - ./storage/pgdata:/var/lib/postgresql/data/
+
+  pgadmin4:
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${ADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${ADMIN_PASSWORD}
+      PGADMIN_LISTEN_PORT: 8080
+    ports:
+      - "172.17.0.1:8924:8080"
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
