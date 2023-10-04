@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   baserow:
-    image: elestio4test/baserow:${SOFTWARE_VERSION_TAG}
+    image: elestio4test/baserow-allinone:${SOFTWARE_VERSION_TAG}
     container_name: 'baserow'
     restart: always
     environment:

@@ -60,7 +60,7 @@ Here are some example snippets to help you get started creating a container.
     version: "3.3"
     services:
     baserow:
-        image: elestio4test/baserow:${SOFTWARE_VERSION_TAG}
+        image: elestio4test/baserow-allinone:${SOFTWARE_VERSION_TAG}
         container_name: 'baserow'
         restart: always
         environment:
