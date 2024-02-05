@@ -4,6 +4,7 @@ services:
     image: elestio/baserow-allinone:${SOFTWARE_VERSION_TAG}
     container_name: "baserow"
     restart: always
+    shm_size: '512mb' 
     environment:
       BASEROW_PUBLIC_URL: "https://${DOMAIN}"
       DATABASE_HOST: db
