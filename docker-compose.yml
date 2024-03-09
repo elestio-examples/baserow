@@ -1,7 +1,8 @@
 version: "3.4"
 services:
   baserow:
-    image: elestio/baserow-allinone:${SOFTWARE_VERSION_TAG}
+    #image: elestio/baserow-allinone:${SOFTWARE_VERSION_TAG}
+    image: elestio/baserow-allinone:1.22.3
     container_name: "baserow"
     restart: always
     shm_size: '512mb' 
