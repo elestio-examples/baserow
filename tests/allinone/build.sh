@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cp -r deploy/all-in-one/* ./
+cp -r deploy/all-in-one/Dockerfile ./Dockerfile
 rm -f docker-compose.yml
 mv docker-compose-new.yml docker-compose.yml
 rm -f README.md

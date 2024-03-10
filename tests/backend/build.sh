@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cp -r backend/* ./
+cp backend/Dockerfile ./Dockerfile
 rm -f docker-compose.yml
 mv docker-compose-new.yml docker-compose.yml
 
