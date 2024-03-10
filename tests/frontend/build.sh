@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cp web-frontend/* ./
+cp -r web-frontend/* ./
 rm -f docker-compose.yml
 mv docker-compose-new.yml docker-compose.yml
 rm -f README.md
