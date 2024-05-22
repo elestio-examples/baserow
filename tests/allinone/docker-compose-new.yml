@@ -5,7 +5,7 @@ services:
     shm_size: "1g"
     restart: always
     environment:
-      BASEROW_PUBLIC_URL: "https://${DOMAIN}"
+      BASEROW_PUBLIC_URL: "http://172.17.0.1:8725"
       DATABASE_HOST: db
       DATABASE_NAME: baserow
       DATABASE_USER: postgres
