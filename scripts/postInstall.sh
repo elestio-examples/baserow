@@ -15,4 +15,4 @@ curl https://${DOMAIN}/api/user/ \
   -H 'content-type: application/json' \
   -H 'pragma: no-cache' \
   -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36' \
-  --data-raw '{"name":"Admin","email":"'${ADMIN_EMAIL}'","password":"'${ADMIN_PASSWORD}'","authenticate":true,"language":"fr"}'
+  --data-raw '{"name":"Admin","email":"'${ADMIN_EMAIL}'","password":"'${ADMIN_PASSWORD}'","authenticate":true,"language":"en"}'
